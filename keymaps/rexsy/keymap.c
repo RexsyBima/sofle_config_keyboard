@@ -2,6 +2,27 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
 
+
+#define ESC_SFT  MT(MOD_LSFT, KC_ESC)    // Hold for Left Shift, tap for Escape
+
+#define A_LGUI MT(MOD_LGUI,KC_A)
+#define R_LALT MT(MOD_LALT,KC_R)
+#define S_LSFT MT(MOD_LSFT,KC_S)
+#define T_LCTL MT(MOD_LCTL,KC_T)
+
+#define O_LGUI MT(MOD_LGUI,KC_O)
+#define I_LALT MT(MOD_LALT,KC_I)
+#define E_LSFT MT(MOD_LSFT,KC_E)
+#define N_LCTL MT(MOD_LCTL,KC_N)
+
+
+
+#define MO_LOWR MO(_LOWER)    // Momentary switch to LOWER layer
+#define MO_RAIS MO(_RAISE)    // Momentary switch to RAISE layer
+#define MO_AJST MO(_ADJUST)   // Momentary switch to ADJUST layer
+
+
+
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     // _QWERTY,
@@ -24,25 +45,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * COLEMAK
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * |`esc  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  | Bspc |
+ * | TAB  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  | "'   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |  '   |
+ * |ESCSFT| ALGUI| RLALT| SLSFT|TLCTL |   G  |-------.    ,-------|   M  | NLGUI| ELALT| ILSFT|OLCTL |  =+  |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   M  |   ,  |   .  |   /  |RShift|
+ * |LCTR  |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   ,< | .>   | \|   |  /?  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
+ *            | LGUI | LAlt | KC_LALT |LOWER | /Space/       \Space \  |RAISE | RCTR | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 
 [_COLEMAK] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV,
-  KC_ESC,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_BSPC,
-  KC_TAB,   KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,  KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI,KC_LALT,KC_LCTL,TL_LOWR, KC_ENT,        KC_SPC,  TL_UPPR, KC_RCTL, KC_RALT, KC_RGUI
+  QK_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINS,
+  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_QUOT,
+  ESC_SFT,   A_LGUI,   R_LALT,    S_LSFT,    T_LCTL,    KC_G,       KC_M,    N_LCTL,    E_LSFT,    I_LALT,    O_LGUI,  KC_EQL,
+  KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_BSLS,  KC_SLSH,
+                 KC_LGUI,KC_LALT,KC_LALT,MO_LOWR, KC_SPC,        SC_SENT,  TL_UPPR, KC_RCTL, KC_RALT, KC_RGUI
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
