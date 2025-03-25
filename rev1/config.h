@@ -1,6 +1,6 @@
 #pragma once
 
-#define TAPPING_TERM 200
+// #define TAPPING_TERM 200
 
 #define TAP_CODE_DELAY 10
 #define SPLIT_USB_DETECT
