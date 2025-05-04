@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * COLEMAK
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |`esc  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * |  ~`  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  | "'   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -69,9 +69,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
-
+// QK_GESC
 [_COLEMAK] = LAYOUT(
-  QK_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINS,
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINS,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_QUOT,
   ESC_SFT,   A_LGUI,   R_LALT,    S_LSFT,    T_LCTL,    KC_G,       KC_M,    N_LCTL,    E_LSFT,    I_LALT,    O_LGUI,  KC_EQL,
   CW_TOGG,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,      KC_CAPS,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_BSLS,  KC_SLSH,
